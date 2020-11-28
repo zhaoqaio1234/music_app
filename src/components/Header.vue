@@ -1,23 +1,30 @@
 <template>
-  <div class="header">
+  <div class="header" @click="selcetColorClick">
     <div class="header-left"></div>
     <p class="header-center">音乐之家</p>
     <div class="header-right"></div>
-
-    <div class="footer">
-      <button @click="Fn('theme')"></button>
-      <button @click="Fn('theme1')"></button>
-      <button @click="Fn('theme2')"></button>
-    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "header",
+  data() {
+    return {
+      themes: ["theme", "theme1", "theme2"],
+      index: 0,
+    };
+  },
   methods: {
-    Fn(data) {
-      document.documentElement.setAttribute("data-theme", data);
+    selcetColorClick() {
+      this.index++;
+      if (this.index >= this.themes.length) {
+        this.index = 0;
+      }
+      document.documentElement.setAttribute(
+        "data-theme",
+        this.themes[this.index]
+      );
     },
   },
 };
@@ -38,12 +45,19 @@ export default {
     @include font_size($font_medium);
     font-weight: bold;
   }
+  .header-left {
+    @include bg_img("../assets/image/logo");
+  }
+  .header-right {
+    @include bg_img("../assets/image/account");
+  }
   .header-left,
   .header-right {
     margin-top: 8px;
     width: 84px;
     height: 84px;
-    background: red;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   .footer {
     position: absolute;

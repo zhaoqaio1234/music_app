@@ -85,7 +85,6 @@
   }
   background-size: cover;
   background-repeat: no-repeat;
-
   [data-theme=theme][data-dpr='2'] & {
     background-image: url($url + '_163@2x.png');
   }
