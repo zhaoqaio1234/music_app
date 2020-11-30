@@ -2,6 +2,7 @@ import axios from 'axios'
 
 // 对axios进行全局配置
 axios.defaults.baseURL = 'http://127.0.0.1:3000'
+
 axios.defaults.timeout = 3000
 
 // 配置自己的请求方式

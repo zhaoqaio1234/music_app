@@ -1,19 +1,26 @@
 <template>
   <div class="header" @click="selcetColorClick">
-    <div class="header-left"></div>
-    <p class="header-center">音乐之家</p>
+    <div class="header-left" @click.stop="back"></div>
+    <p class="header-center">{{ title }}</p>
     <div class="header-right"></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Header',
+  name: 'Subheader',
   data() {
     return {
       themes: ['theme', 'theme1', 'theme2'],
       index: 0,
     }
+  },
+  props: {
+    title: {
+      type: String,
+      default: '',
+      required: true,
+    },
   },
   methods: {
     selcetColorClick() {
@@ -26,13 +33,16 @@ export default {
         this.themes[this.index]
       )
     },
+    back() {
+      window.history.back()
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/css/variable';
-@import '../assets/css/mixin';
+@import '../../assets/css/variable';
+@import '../../assets/css/mixin';
 .header {
   width: 100%;
   height: 100px;
@@ -44,12 +54,13 @@ export default {
     color: #fff;
     @include font_size($font_medium);
     font-weight: bold;
+    @include no_wrap();
   }
   .header-left {
-    @include bg_img('../assets/image/logo');
+    @include bg_img('../../assets/image/back');
   }
   .header-right {
-    @include bg_img('../assets/image/account');
+    @include bg_img('../../assets/image/more');
   }
   .header-left,
   .header-right {
@@ -58,24 +69,6 @@ export default {
     height: 84px;
     background-size: cover;
     background-repeat: no-repeat;
-  }
-  .footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    button {
-      width: 100px;
-      height: 100px;
-      &:nth-of-type(1) {
-        background: $background-color-theme;
-      }
-      &:nth-of-type(2) {
-        background: $background-color-theme1;
-      }
-      &:nth-of-type(3) {
-        background: $background-color-theme2;
-      }
-    }
   }
 }
 </style>

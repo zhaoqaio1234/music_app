@@ -25,6 +25,8 @@ export default {
 // @import "../assets/css/varible";
 @import '../assets/css/mixin';
 .tabbar {
+  // position: relative;
+  // z-index: 999;
   display: flex;
   justify-content: space-around;
   width: 100%;

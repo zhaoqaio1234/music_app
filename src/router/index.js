@@ -14,6 +14,11 @@ const Recommend = (resolve) => {
     resolve(module)
   })
 }
+const Detail = (resolve => {
+  import('../views/Detail').then((module) => {
+    resolve(module)
+  })
+})
 const Search = (resolve) => {
   import('../views/Search').then((module) => {
     resolve(module)
@@ -32,7 +37,7 @@ const Singer = (resolve) => {
 
 const routes = [
   { path: '/', redirect: 'recommend' },
-  { path: '/recommend', component: Recommend },
+  { path: '/recommend', component: Recommend, children: [{ path: 'detail/:id/:type', component: Detail }] },
   { path: '/rank', component: Rank },
   { path: '/search', component: Search },
   { path: '/singer', componen: Singer },
